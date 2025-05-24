@@ -1,18 +1,20 @@
 'use strict';
 
-const input = document.querySelectorAll('.field-text');
+const input = document.querySelectorAll('input');
 
 input.forEach((element) => {
-  const label = document.createElement('label');
+  if (element.id && element.name) {
+    const label = document.createElement('label');
 
-  label.classList.add('field-label');
-  label.setAttribute('for', element.id);
-  label.textContent = element.name;
+    label.classList.add('field-label');
+    label.setAttribute('for', element.id);
+    label.textContent = element.name;
 
-  element.parentNode.prepend(label);
+    element.parentNode.prepend(label);
 
-  element.setAttribute(
-    'placeholder',
-    element.name[0].toUpperCase() + element.name.slice(1),
-  );
+    element.setAttribute(
+      'placeholder',
+      element.name[0].toUpperCase() + element.name.slice(1),
+    );
+  }
 });
